@@ -6,9 +6,7 @@
 # Glenn P. Downing
 # ---------------------------
 
-# ------------
-# collatz_read
-# ------------
+
 
 def collatz_read (r) :
     """
@@ -22,9 +20,6 @@ def collatz_read (r) :
     a = s.split()
     return [int(v) for v in a]
 
-# ------------
-# collatz_eval
-# ------------
 
 def collatz_eval (i, j) :
     """
@@ -44,18 +39,14 @@ def collatz_eval (i, j) :
         while x > 1:
             if (x % 2) == 0:
                 x = (x // 2)
+                c+=1
             else:
-                x = (3 * x) + 1
-            c += 1
-
+                x = x + (x // 2) + 1
+                c += 2
         if c > v:
             v = c
         assert c > 0
     return v
-
-# -------------
-# collatz_print
-# -------------
 
 def collatz_print (w, i, j, v) :
     """
@@ -67,9 +58,6 @@ def collatz_print (w, i, j, v) :
     """
     w.write(str(i) + " " + str(j) + " " + str(v) + "\n")
 
-# -------------
-# collatz_solve
-# -------------
 
 def collatz_solve (r, w) :
     """

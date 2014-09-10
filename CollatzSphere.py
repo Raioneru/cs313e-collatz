@@ -33,16 +33,15 @@ def collatz_eval (i, j) :
         c=1
         
         while x > 1:
+            
             if (x % 2) == 0:
                 x = (x // 2)
-                c+= 1
+                c+=1
             else:
-                x = ((3 * x) + 1)/2
+                x = x + (x // 2) + 1
                 c += 2
-
         if c > v:
             v = c
-        
     return v
 
 def collatz_print (w, i, j, v) :
