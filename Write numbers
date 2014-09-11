@@ -1,0 +1,10 @@
+import random
+
+file= open('RunCollatz.in.txt','a')
+for x in range(1000):
+    number=random.randint(1,1000000)
+    number2=random.randint(1,1000000)
+    file.write(str(number)+ ' ')
+    file.write(str(number2) + '\n')
+
+file.close()

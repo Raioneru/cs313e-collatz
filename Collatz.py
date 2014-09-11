@@ -5,8 +5,9 @@
 # Copyright (C) 2014
 # Glenn P. Downing
 # ---------------------------
-
-
+cache =[0]*301
+startC=1
+endC=300
 
 def collatz_read (r) :
     """
@@ -27,26 +28,62 @@ def collatz_eval (i, j) :
     j the end       of the range, inclusive
     return the max cycle length of the range [i, j]
     """
+    
+    global startC, endC
+    
+    collatz(startC,endC,cache)
+    v = cycle_length(i,j,cache, endC)
 
-
-    v = 0
-        
-    for x in range(i, j+1):
-        
-        assert x > 0
-        c=1
-        
-        while x > 1:
-            if (x % 2) == 0:
-                x = (x // 2)
-                c+=1
-            else:
-                x = x + (x // 2) + 1
-                c += 2
-        if c > v:
-            v = c
-        assert c > 0
     return v
+
+def collatz(start,end,cache):
+    v=0
+    for num in range (start, end+1):
+        origNum= num
+        c = 1
+        while num> 1:
+            if (num % 2) != 0:
+                num = num+(num//2) +1
+                c+=2
+                
+            else:
+                num = (num // 2)
+                c+=1
+        if c>v:
+            v=c
+        cache[origNum]=c
+        
+    
+
+
+def cycle_length(i,j, cache, endC):
+    maxCycle=0
+
+    if i>j:
+        temp = j
+        j = i
+        i = temp
+    
+    for num in range (i, j+1):
+        c=0
+        while num > endC:
+            if (num % 2) != 0:
+                num = num+(num//2) +1
+                c+=2
+                
+            else:
+                num = (num // 2)
+                c+=1
+                
+        if num<=endC:
+            c+=cache[num]
+            
+            if c > maxCycle:
+                maxCycle = c
+            
+    return maxCycle
+
+
 
 def collatz_print (w, i, j, v) :
     """
