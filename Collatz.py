@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-
-# ---------------------------
-# projects/collatz/Collatz.py
-# Copyright (C) 2014
-# Glenn P. Downing
-# ---------------------------
-
 cache =[0]*1226
 startC=1
 endC=1225
@@ -29,7 +21,7 @@ def collatz_eval (i, j) :
     j the end       of the range, inclusive
     return the max cycle length of the range [i, j]
     """
-    
+        
     global startC, endC
     
     collatz(startC,endC,cache)
@@ -64,11 +56,10 @@ def cycle_length(i,j, cache, endC):
         temp = j
         j = i
         i = temp
-    assert j >= i
+    assert j>=i
     
     for num in range (i, j+1):
         c=0
-        assert i > 0
         while num > endC:
             if (num % 2) != 0:
                 num = num+(num//2) +1
@@ -83,10 +74,8 @@ def cycle_length(i,j, cache, endC):
             
             if c > maxCycle:
                 maxCycle = c
-    assert maxCycle > 0
+    assert maxCycle> 0        
     return maxCycle
-
-
 
 def collatz_print (w, i, j, v) :
     """
