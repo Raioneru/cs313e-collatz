@@ -1,6 +1,12 @@
+..................
+----------------------------------------------------------------------
+Ran 18 tests in 106.850s
+
+OK
+raioneru@pop-rocks:/v/filer4b/v35q001/raioneru/cs313e$ coverage3 report -m
 Name          Stmts   Miss Branch BrMiss  Cover   Missing
 ---------------------------------------------------------
-Collatz          58      3     26      2    94%   56-58
+Collatz          59      3     26      2    94%   64-66
 TestCollatz      65      1      0      0    98%   122
 ---------------------------------------------------------
-TOTAL           123      4     26      2    96%   
+TOTAL           124      4     26      2    96%  
